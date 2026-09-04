@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Table → CSV</title>
+    <meta name="description" content="Convert GitHub-flavored Markdown pipe tables to RFC 4180 CSV. Client-side, no uploads.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Markdown Table → CSV</h1>
+            <p class="subtitle">Convert GitHub-flavored Markdown pipe tables to RFC 4180 CSV</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <div class="section-header">
+                    <h2>Input</h2>
+                    <div class="button-group">
+                        <button id="loadSampleBtn" type="button" class="secondary-btn">Load Sample</button>
+                        <label for="fileInput" class="secondary-btn file-label">Choose File</label>
+                        <input type="file" id="fileInput" accept=".md,.txt" aria-label="Upload Markdown file">
+                    </div>
+                </div>
+                
+                <div class="drop-zone" id="dropZone">
+                    <textarea 
+                        id="markdownInput" 
+                        placeholder="Paste your Markdown table here, or drop a .md/.txt file..."
+                        aria-label="Markdown table input"
+                        rows="12"></textarea>
+                </div>
+                
+                <div id="errorMessage" class="error-message" role="alert" aria-live="polite"></div>
+            </section>
+
+            <section class="output-section" id="outputSection">
+                <div class="section-header">
+                    <h2>Output</h2>
+                    <div class="button-group">
+                        <button id="copyBtn" type="button" class="primary-btn">Copy CSV</button>
+                        <button id="downloadBtn" type="button" class="primary-btn">Download CSV</button>
+                    </div>
+                </div>
+
+                <div class="preview-container">
+                    <h3>Table Preview</h3>
+                    <div id="tablePreview" class="table-preview"></div>
+                </div>
+
+                <div class="preview-container">
+                    <h3>CSV Output</h3>
+                    <textarea 
+                        id="csvOutput" 
+                        readonly 
+                        aria-label="CSV output"
+                        rows="12"></textarea>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>
+                <strong>Privacy:</strong> All processing happens in your browser. Nothing is uploaded.
+            </p>
+            <p>
+                Built by Evan Parrott | <a href="https://github.com/evan-thedev/markdown-table-csv">Source on GitHub</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
